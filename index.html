@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOMA RED T00L</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #ff004f;
+      --secondary-color: #1f1f2e;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --blur: blur(20px);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Orbitron', 'Roboto Mono', sans-serif;
+      background: radial-gradient(circle at top left, #0f0c29, #302b63, #24243e);
+      overflow-x: hidden;
+      color: #fff;
+    }
+
+    .section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .glass-box {
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur);
+      border-radius: 30px;
+      padding: 3rem;
+      max-width: 800px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      animation: fadeSlideUp 1.5s ease;
+    }
+
+    h1, h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: var(--main-color);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #ff3366;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #ff004f80;
+    }
+
+    .parallax-layer {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+      transform: translate(0px, 0px);
+      transition: transform 0.1s ease-out;
+    }
+
+    #layer1 { z-index: 0; }
+    #layer2 { z-index: 0; }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1, h2 {
+        font-size: 1.8rem;
+      }
+
+      .glass-box {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 배경 Parallax 레이어 -->
+  <div id="layer1" class="parallax-layer"></div>
+  <div id="layer2" class="parallax-layer"></div>
+
+  <!-- 1페이지: 소개 -->
+  <section class="section" id="intro">
+    <div class="glass-box">
+      <h1>최고의 멀티툴</h1>
+      <h2>TOMA RED T00L</h2>
+      <p>토큰과 완벽한 기능의 조화. <br>지금바로 체험해보세요.</p>
+      <a href="#download" class="btn">지금바로 받기</a>
+    </div>
+  </section>
+
+  <!-- 2페이지: 다운로드 -->
+  <section class="section" id="download">
+    <div class="glass-box">
+      <h2>TOMARED_t00l.zip 다운로드</h2>
+      <p>안정성과 기능을 모두 갖춘 최고의 툴을<br> 한 번의 클릭으로 받아보세요.</p>
+      <a href="TOMARED_t00l.zip" download class="btn">다운로드</a>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    Made by <strong>mp</strong>, <strong>tc</strong>
+  </footer>
+
+  <!-- Parallax Script -->
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      document.getElementById('layer1').style.transform = `translate(${x}px, ${y}px)`;
+      document.getElementById('layer2').style.transform = `translate(${-x}px, ${-y}px)`;
+    });
+  </script>
+</body>
+</html>
